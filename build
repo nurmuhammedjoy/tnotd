@@ -20,9 +20,9 @@ echo "[*] Building notification binary..."
 clang "$notif_src" -o tnotd $(pkg-config --cflags --libs gtk+-3.0 libnotify)
 
 echo "[*] Building daemon binary..."
-clang "$daemon_src" -o idk -ljson-c
+clang "$daemon_src" -o daemon -ljson-c
 
-echo "[󰩐] Build complete!"
+echo "[*] Build complete!"
 echo
 echo "In your i3 config (usually at ~/.config/i3/config), add this line:"
 echo 'exec_always --no-startup-id notifd'
