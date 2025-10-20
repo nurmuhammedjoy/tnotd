@@ -20,8 +20,8 @@ typedef struct {
 
 // configurations
 AppConfig app_configs[] = {
-    {"com.discord", "discord", "./notification '{TITLE}' '{CONTENT}' discord.png"},
-    {"com.spotify.music", "spotify", "./notification 'Artist: {CONTENT}' 'Song: {TITLE}' song.jpeg"},
+    {"com.discord", "discord", "./notification '{TITLE}' '{CONTENT}' images/discord.png"},
+    {"com.spotify.music", "spotify", "./notification 'Artist: {CONTENT}' 'Song: {TITLE}' images/spotify.png"},
     // add more apps here if needed
 
 };
@@ -253,7 +253,7 @@ void process_app_notification(AppConfig* config) {
 }
 
 int main() {
-    printf("Starting notification monitor...\n");
+    printf("Starting notification daemon...\n");
     
     // create cache directory
     if (create_cache_dir() != 0) {
