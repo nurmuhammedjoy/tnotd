@@ -15,7 +15,6 @@
 
 </div>
 
----
 
 ## 📋 Table of Contents
 
@@ -25,7 +24,7 @@
 - [Contributing](#-contributing)
 - [License](#-license)
 
----
+
 
 ## 🎯 Overview
 
@@ -37,10 +36,7 @@
 <p>When running a full Linux desktop environment on Android via Termux and VNC/X11, you miss out on Android notifications. tnotd solves this by forwarding Android notifications to your desktop environment, keeping you informed without switching contexts.</p>
 </details>
 
----
 
-
-## 📦 Requirements
 
 ### System Dependencies
 
@@ -53,8 +49,20 @@
 ```bash
 pkg install git clang gtk3 libnotify termux-api
 ```
+### How to Build and Install
 
----
+```bash
+git clone https://github.com/nurmuhammedjoy/tnotd.git
+
+cd tnotd
+
+clang notification.c -o tnotd `pkg-config --cflags --libs gtk+-3.0 libnotify`
+
+clang daemon.c -o idk -ljson-c 
+
+```
+
+
 
 ## 🤝 Contributing
 

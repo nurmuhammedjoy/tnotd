@@ -20,8 +20,8 @@ typedef struct {
 
 // configurations
 AppConfig app_configs[] = {
-    {"com.discord", "discord", "./notification '{TITLE}' '{CONTENT}' images/discord.png"},
-    {"com.spotify.music", "spotify", "./notification 'Artist: {CONTENT}' 'Song: {TITLE}' images/spotify.png"},
+    {"com.discord", "discord", "tnotd '{TITLE}' '{CONTENT}' images/discord.png"},
+    {"com.spotify.music", "spotify", "tnotd 'Artist: {CONTENT}' 'Song: {TITLE}' images/spotify.png"},
     // add more apps here if needed
 
 };

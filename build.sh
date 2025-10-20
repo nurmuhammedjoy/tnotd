@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# build.sh – Build and install Termux notification daemon components
+
+set -e  # exit if any command fails
+
+echo "[*] Searching for source files..."
+daemon_src=$(find . -type f -name "daemon.c" | head -n 1)
+notif_src=$(find . -type f -name "notification.c" | head -n 1)
+
+if [ -z "$daemon_src" ] || [ -z "$notif_src" ]; then
+    echo "[!] Missing source files: daemon.c or notification.c not found."
+    exit 1
+fi
+
+echo "[*] Installing dependencies..."
+pkg install -y clang gtk3 libnotify json-c pkg-config > /dev/null
+
+echo "[*] Building notification binary..."
+clang "$notif_src" -o tnotd $(pkg-config --cflags --libs gtk+-3.0 libnotify)
+
+echo "[*] Building daemon binary..."
+clang "$daemon_src" -o idk -ljson-c
+
+echo "[󰩐] Build complete!"
+echo
+echo "In your i3 config (usually at ~/.config/i3/config), add this line:"
+echo 'exec_always --no-startup-id notifd'
+echo
+echo "Then reload i3 (Mod+Shift+R) to apply."
+
