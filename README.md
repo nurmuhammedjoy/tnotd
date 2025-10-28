@@ -99,10 +99,12 @@ AppConfig app_configs[] = {
 ---
 
 ## Preview
-
+<div align="center">
+  
 ![Preview](preview.png)
 ![Preview 1](preview1.png)
 
+</div>
 ---
 
 > **Note:** Approximately 30% of the initial code was written using AI assistance, so there may be it has some bug.
