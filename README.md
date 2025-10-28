@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🔔 tnotd
+# tnotd
 
 ### Termux Notification Daemon for X11
 
@@ -28,13 +28,9 @@
 
 ## 🎯 Overview
 
-**tnotd** (Termux Notification Daemon) bridges Android notifications to X11 desktop environments running on Termux. It listens for Android system notifications through the Termux:API and renders them as native-looking GTK notifications in your X11 session.
+**tnotd** (Termux Notification Daemon) bridges Android notifications to X11 desktop environments running on Termux. It listens for Android system notifications through the Termux:API
 
-<details>
-<summary><b>Why tnotd?</b></summary>
-<br>
-<p>When running a full Linux desktop environment on Android via Termux and VNC/X11, you miss out on Android notifications. tnotd solves this by forwarding Android notifications to your desktop environment, keeping you informed without switching contexts.</p>
-</details>
+
 
 
 
@@ -47,7 +43,7 @@
 ### Build Dependencies
 
 ```bash
-pkg install git clang gtk3 libnotify termux-api
+pkg install git clang gtk3 libnotify termux-api xorgproto
 ```
 ### How to Build and Install
 
@@ -55,14 +51,46 @@ pkg install git clang gtk3 libnotify termux-api
 git clone https://github.com/nurmuhammedjoy/tnotd.git
 
 cd tnotd
+make
+make install
+make clean
 
-clang notification.c -o tnotd `pkg-config --cflags --libs gtk+-3.0 libnotify`
+```
+### how to use 
 
-clang daemon.c -o idk -ljson-c 
+if you want to just display any notification then 
+
+```bash
+
+tnotd "title" "description" image.file
 
 ```
 
+and if you want to run notification daemon
 
+```bash
+
+daemon
+
+```
+
+also you can configure what you want to display 
+
+[daemon.c]
+```bash
+// configurations
+AppConfig app_configs[] = {
+    {"com.discord", "discord", "tnotd '{TITLE}' '{CONTENT}' images/discord.png"},
+    {"com.spotify.music", "spotify", "tnotd 'Artist: {CONTENT}' 'Song: {TITLE}' images/spotify.png"},
+    // add more apps here if needed
+
+};
+```
+>> note: most of the initial like 30-40% code written by using ai so it has some work 
+
+ 
+[preview.png]
+[preview1.png]
 
 ## 🤝 Contributing
 
