@@ -15,84 +15,99 @@
 
 </div>
 
-
-## 📋 Table of Contents
-
-- [Overview](#-overview)
-- [Features](#-features)
-- [Requirements](#-requirements)
-- [Contributing](#-contributing)
-- [License](#-license)
-
-
+---
 
 ## 🎯 Overview
 
-**tnotd** (Termux Notification Daemon) bridges Android notifications to X11 desktop environments running on Termux. It listens for Android system notifications through the Termux:API
+**tnotd** (Termux Notification Daemon) bridges Android notifications to X11 desktop environments running on Termux. It listens for Android system notifications through the Termux:API and displays them as native X11 notifications.
 
+---
 
+## ✨ Features
 
+- 🔔 Real-time Android notification forwarding to X11
+- 🎨 GTK-based notification display
+- ⚙️ Configurable app-specific notification handling
+- 🪶 Lightweight and efficient daemon
+- 🔧 Easy to customize and extend
 
+---
+
+## 📦 Requirements
 
 ### System Dependencies
 
 - **Termux** app (from F-Droid or GitHub)
 - **Termux:API** app (from F-Droid or GitHub)
-- **termux-api** With proper permissions granted
+- **termux-api** package with proper permissions granted
 
 ### Build Dependencies
 
 ```bash
 pkg install git clang gtk3 libnotify termux-api xorgproto
 ```
-### How to Build and Install
+
+---
+
+## 🛠️ How to Build and Install
 
 ```bash
 git clone https://github.com/nurmuhammedjoy/tnotd.git
-
 cd tnotd
 make
 make install
 make clean
-
 ```
-### how to use 
 
-if you want to just display any notification then 
+---
+
+## 🚀 How to Use
+
+### Display a Single Notification
+
+If you want to display a one-time notification:
 
 ```bash
-
 tnotd "title" "description" image.file
-
 ```
 
-and if you want to run notification daemon
+### Run as a Daemon
+
+To run the notification daemon continuously:
 
 ```bash
-
 daemon
-
 ```
 
-also you can configure what you want to display 
+### Configuration
 
-[daemon.c]
-```bash
-// configurations
+You can configure which apps trigger notifications by editing the `daemon.c` file:
+
+```c
+// Configuration
 AppConfig app_configs[] = {
     {"com.discord", "discord", "tnotd '{TITLE}' '{CONTENT}' images/discord.png"},
     {"com.spotify.music", "spotify", "tnotd 'Artist: {CONTENT}' 'Song: {TITLE}' images/spotify.png"},
-    // add more apps here if needed
-
+    // Add more apps here if needed
 };
 ```
->> note: most of the initial like 30-40% code written by using ai so it has some work 
 
- 
-[preview.png]
-[preview1.png]
+> also you can customise your appearance this `notification.c`
 
-## 🤝 Contributing
+
+
+---
+
+## Preview
+
+![Preview](preview/preview.png)
+![Preview 1](preview/preview1.png)
+
+---
+
+> **Note:** Approximately 30% of the initial code was written using AI assistance, so there may be it has some bug.
+
+##  Contributing
 
 Contributions are welcome! Feel free to:
 
