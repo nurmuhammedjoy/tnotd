@@ -100,8 +100,8 @@ AppConfig app_configs[] = {
 
 ## Preview
 
-![Preview](preview/preview.png)
-![Preview 1](preview/preview1.png)
+![Preview](preview.png)
+![Preview 1](preview1.png)
 
 ---
 
